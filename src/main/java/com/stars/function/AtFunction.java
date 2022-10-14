@@ -4,12 +4,6 @@ import com.stars.utils.BotUtils;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
 import net.mamoe.mirai.message.data.At;
 
-/**
- * @program: MiraiDemo
- * @description:
- * @author: HanZiXin
- * @create: 2022-10-13 14:41
- **/
 public class AtFunction {
 
     public static void handleEvent(GroupMessageEvent event) {
