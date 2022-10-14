@@ -14,7 +14,7 @@ public class AtFunction {
             long fromGroup = event.getGroup().getId();
             long fromQQ = event.getSender().getId();
             String receiveMsg = event.getMessage().contentToString();
-
+            event.getSender().sendMessage("1111");
 //            // Get Answer And SendMsg.
 //            String sendMsg = QingYunKe_API.getAnswer(receiveMsg);
 //            MessageManager.sendMessageBySituation(fromGroup, fromQQ, sendMsg);

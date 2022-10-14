@@ -4,6 +4,7 @@ public interface Constants {
 
     interface MessageType {
         int GROUP_MESSAGE = 1;
+        int USER_MESSAGE = 2;
     }
 
     interface ResponseType {
