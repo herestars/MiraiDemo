@@ -2,6 +2,7 @@ package com.stars.command;
 
 import com.stars.entity.Game;
 import net.mamoe.mirai.contact.Group;
+import net.mamoe.mirai.contact.Member;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,14 +17,22 @@ public class DuelGameBuilder {
 
     private static Map<Group, Game> gameMap = new HashMap<>();
 
-    public static Game startNewGame(Group group, Long... players) {
+    public static Game startNewGame(Group group, Member... players) {
         if (gameMap.containsKey(group)) return null;
         Game game = Game.GameInit(group, players);
         gameMap.put(group, game);
         return game;
     }
 
+    public static Game findGameByUser(Long qq) {
+        for (Game game : gameMap.values()) {
+            if (game.getPlayer(qq) != null) return game;
+        }
+        return null;
+    }
+
     public static void endGame(Group group) {
+        gameMap.get(group).isOver = true;
         gameMap.remove(group);
     }
 
