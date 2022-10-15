@@ -60,16 +60,21 @@ public class Game {
             group.sendMessage("第" + round + "回合开始\n" +
                     "玩家1：" + n1 + "(" + p1.QQ.getId() + ")" + "剩余血量为 " + p1.HP +
                     " HP\n玩家2：" + n2 + "(" + p2.QQ.getId() + ")" + "剩余血量为 " + p2.HP + " HP");
-            if(p1.IsFreeze) group.sendMessage("本回合 "+n1+" 因上回合攻击失败玉玉中！无法行动喵！");
+            if (p1.IsFreeze) {
+                group.sendMessage("本回合 " + n1 + " 因上回合攻击失败玉玉中！无法行动喵！");
+            }
+            if (p2.IsFreeze) {
+                group.sendMessage("本回合 " + n2 + " 因上回合攻击失败玉玉中！无法行动喵！");
+            }
             if (!GameHelper.duel(p1, p2)) return;
             round++;
         }
-        if (p1.HP < 0 && p2.HP < 0) {
+        if (p1.HP <= 0 && p2.HP <= 0) {
             group.sendMessage("双方同归于尽！本次决斗没有赢家！建议不服再来一场喵！");
         } else if (p1.HP > 0) {
-            group.sendMessage("恭喜 " + n1 + " 获胜，剩余血量："+p1.HP+"建议 "+n2+" 不服再来一场喵！");
+            group.sendMessage("恭喜 " + n1 + " 获胜，剩余血量：" + p1.HP + "建议 " + n2 + " 不服再来一场喵！");
         } else {
-            group.sendMessage("恭喜 " + n2 + " 获胜，剩余血量："+p1.HP+"建议 "+n1+" 不服再来一场喵！");
+            group.sendMessage("恭喜 " + n2 + " 获胜，剩余血量：" + p1.HP + "建议 " + n1 + " 不服再来一场喵！");
         }
         isStart = false;
         DuelGameBuilder.endGame(group);

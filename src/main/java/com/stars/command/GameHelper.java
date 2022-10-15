@@ -44,33 +44,33 @@ public class GameHelper {
         String n2 = target.QQ.getNick();
         if (self.move == 1) {
             if (r.nextInt(Constants.GameVal.RAND_RANGE) >= target.HeadDodge * Constants.GameVal.RAND_RANGE && target.move != 4) {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击头部："+"爆头！" + n2 + " - " + self.HeadAttack + " HP");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击头部：" + "爆头！" + n2 + " - " + self.HeadAttack + " HP");
                 target.HP -= self.HeadAttack;
             } else if (target.move == 4) {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击头部："+"爆头！什么！是防弹头盔！\n" + n1 + " 本次攻击失败，下一回合将受到由挫败感打击带来的冻结惩罚（无法行动）");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击头部：" + "爆头！什么！是防弹头盔！\n" + n1 + " 本次攻击失败，下一回合将受到由挫败感打击带来的冻结惩罚（无法行动）");
                 self.IsFreeze = true;
             } else {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击头部："+self.QQ.getNick()+"，你他娘的打偏了!");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击头部：" + self.QQ.getNick() + "，你他娘的打偏了!");
             }
         } else if (self.move == 2) {
             if (r.nextInt(Constants.GameVal.RAND_RANGE) >= target.ChestDodge * Constants.GameVal.RAND_RANGE && target.move != 5) {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击胸部："+"袭胸！" + n2 + " - " + self.ChestAttack + " HP");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击胸部：" + "袭胸！" + n2 + " - " + self.ChestAttack + " HP");
                 target.HP -= self.ChestAttack;
             } else if (target.move == 5) {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击胸部："+"袭胸！什么！是男的！\n" + n1 + " 本次攻击失败，下一回合将受到由挫败感打击带来的冻结惩罚（无法行动）");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击胸部：" + "袭胸！什么！是男的！\n" + n1 + " 本次攻击失败，下一回合将受到由挫败感打击带来的冻结惩罚（无法行动）");
                 self.IsFreeze = true;
             } else {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击胸部："+self.QQ.getNick()+"，你他娘的打偏了!");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击胸部：" + self.QQ.getNick() + "，你他娘的打偏了!");
             }
         } else if (self.move == 3) {
             if (r.nextInt(Constants.GameVal.RAND_RANGE) >= target.LegDodge * Constants.GameVal.RAND_RANGE && target.move != 6) {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击腿部："+"我一个滑铲！" + n2 + " - " + self.LegAttack + " HP");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击腿部：" + "我一个滑铲！" + n2 + " - " + self.LegAttack + " HP");
                 target.HP -= self.LegAttack;
             } else if (target.move == 6) {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击腿部："+"什么！他居然会跳！\n" + n1 + " 本次攻击失败，下一回合将受到由挫败感打击带来的冻结惩罚（无法行动）");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击腿部：" + "什么！他居然会跳！\n" + n1 + " 本次攻击失败，下一回合将受到由挫败感打击带来的冻结惩罚（无法行动）");
                 self.IsFreeze = true;
             } else {
-                group.sendMessage(self.QQ.getNick()+"选择了攻击腿部："+self.QQ.getNick()+"，你他娘的打偏了!");
+                group.sendMessage(self.QQ.getNick() + "选择了攻击腿部：" + self.QQ.getNick() + "，你他娘的打偏了!");
             }
         }
     }
