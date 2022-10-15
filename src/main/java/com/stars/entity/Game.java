@@ -53,9 +53,8 @@ public class Game {
     public void start() {
         isStart = true;
         Player p1 = players.get(0), p2 = players.get(1);
-        String n1 = Objects.requireNonNull(group.get(p1.QQ)).getNameCard(),
-                n2 = Objects.requireNonNull(group.get(p2.QQ)).getNameCard();
-        boolean flag = new Random().nextBoolean();
+        String n1 = p1.QQ.getNick(),
+                n2 = p2.QQ.getNick();
         while (p1.HP > 0 && p2.HP > 0) {
             if (isOver) return;
             group.sendMessage("第" + round + "回合开始\n" +
@@ -70,7 +69,7 @@ public class Game {
         } else if (p1.HP > 0) {
             group.sendMessage("恭喜 " + n1 + " 获胜，剩余血量："+p1.HP+"建议 "+n2+" 不服再来一场喵！");
         } else {
-            group.sendMessage("恭喜 " + n2 + " 获胜，建议不服再来一场");
+            group.sendMessage("恭喜 " + n2 + " 获胜，剩余血量："+p1.HP+"建议 "+n1+" 不服再来一场喵！");
         }
         isStart = false;
         DuelGameBuilder.endGame(group);

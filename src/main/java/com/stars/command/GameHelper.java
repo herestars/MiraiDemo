@@ -1,6 +1,6 @@
 package com.stars.command;
 
-import com.stars.entity.Game;
+import com.stars.constant.Constants;
 import com.stars.entity.Player;
 import net.mamoe.mirai.contact.Group;
 import net.mamoe.mirai.contact.Member;

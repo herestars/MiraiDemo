@@ -19,4 +19,7 @@ public interface Constants {
         int Room_Enough = 7;
     }
 
+    interface GameVal {
+        int RAND_RANGE = 100;
+    }
 }

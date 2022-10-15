@@ -31,6 +31,7 @@ public class Player {
     public double HeadDodge = 0.25;
     public double ChestDodge = 0.15;
     public double LegDodge = 0.10;
+    public boolean IsFreeze = false;
 
     public Player(Member QQ, Group fromGroup) {
         this.QQ = QQ;
