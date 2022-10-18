@@ -7,6 +7,7 @@ import com.stars.constant.Constants;
 import com.stars.entity.Game;
 import com.stars.entity.Player;
 import com.stars.utils.BotUtils;
+import com.stars.utils.PlayerRecord;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
 import net.mamoe.mirai.contact.Group;
@@ -24,8 +25,8 @@ public final class MiraiDemo extends JavaPlugin {
 
     private MiraiDemo() {
         super(new JvmPluginDescriptionBuilder("com.stars.mirai", "0.1.0")
-                .name("MiraiDemo")
-                .author("HanZiXin")
+                .name("DuelGame")
+                .author("HanZiXin + Hiori")
                 .build());
     }
 
@@ -37,6 +38,9 @@ public final class MiraiDemo extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("Plugin loaded!");
+        PlayerRecord pr = new PlayerRecord();
+        pr.init();
+        getLogger().info("PlayerData Init Completed!");
         commandManager = new RobotCommandManager();
 
         /* 接收群消息事件 **/

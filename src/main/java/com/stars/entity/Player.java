@@ -13,7 +13,7 @@ public class Player {
      */
     public Member QQ;
     /**
-     * 玩家所在的群主
+     * 玩家所在的群号码
      */
     public Group fromGroup;
     /**

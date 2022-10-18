@@ -26,11 +26,11 @@ public class GameHelper {
         if (p.IsFreeze) {
             member.sendMessage("玉玉了（悲，本回合什么都不能做）");
             p.move = 0;
-            p.IsFreeze = false;
             return;
         }
-        member.sendMessage("请选择攻击的部位（回复数字）：\n1、头部（" + p.HeadAttack + "HP)\n2、胸部（" + p.ChestAttack + "HP）\n3、腿部（" + p.LegAttack + "HP）" +
-                "\n或者选择防守的部位：\n4、头部\n5、胸部\n6、腿部\n防守成功将完全抵挡伤害并冻结对手一回合。");
+        member.sendMessage("请选择攻击的部位（回复数字）：\n1、头部（" + p.HeadAttack + "HP)\n2、胸部（" + p.ChestAttack + "HP）\n3、腿部（" + p.LegAttack + "HP）\n" +
+                "注：伤害越高的部位，闪避率也越高。\n" +
+                "\n或者选择防守的部位：\n4、头部\n5、胸部\n6、腿部\n注：防守成功将完全抵挡伤害并冻结对手一回合。");
     }
 
     // attackLogic
@@ -72,6 +72,11 @@ public class GameHelper {
             } else {
                 group.sendMessage(self.QQ.getNick() + "选择了攻击腿部：" + self.QQ.getNick() + "，你他娘的打偏了!");
             }
+        } else {
+            if(!self.IsFreeze) {
+                group.sendMessage(self.QQ.getNick() + "选择了防御");
+            }
+            self.IsFreeze = false;
         }
     }
 

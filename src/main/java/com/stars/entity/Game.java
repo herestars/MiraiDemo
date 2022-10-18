@@ -2,9 +2,11 @@ package com.stars.entity;
 
 import com.stars.command.DuelGameBuilder;
 import com.stars.command.GameHelper;
+import com.stars.utils.PlayerRecord;
 import net.mamoe.mirai.contact.Group;
 import net.mamoe.mirai.contact.Member;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -71,13 +73,26 @@ public class Game {
         }
         if (p1.HP <= 0 && p2.HP <= 0) {
             group.sendMessage("双方同归于尽！本次决斗没有赢家！建议不服再来一场喵！");
+            PlayerRecord.AddDraw(p1.QQ.getId(),n1);
+            PlayerRecord.AddDraw(p2.QQ.getId(),n2);
         } else if (p1.HP > 0) {
-            group.sendMessage("恭喜 " + n1 + " 获胜，剩余血量：" + p1.HP + "建议 " + n2 + " 不服再来一场喵！");
+            group.sendMessage("恭喜 " + n1 + " 获胜，剩余血量：" + p1.HP + " 建议 " + n2 + " 不服再来一场喵！");
+            PlayerRecord.AddWin(p1.QQ.getId(),n1);
+            PlayerRecord.AddLose(p2.QQ.getId(),n2);
         } else {
-            group.sendMessage("恭喜 " + n2 + " 获胜，剩余血量：" + p1.HP + "建议 " + n1 + " 不服再来一场喵！");
+            group.sendMessage("恭喜 " + n2 + " 获胜，剩余血量：" + p2.HP + " 建议 " + n1 + " 不服再来一场喵！");
+            PlayerRecord.AddWin(p2.QQ.getId(),n2);
+            PlayerRecord.AddLose(p1.QQ.getId(),n1);
         }
         isStart = false;
         DuelGameBuilder.endGame(group);
+        try {
+            PlayerRecord.saveFile();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
