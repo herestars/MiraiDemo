@@ -3,20 +3,16 @@ package com.stars.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.stars.MiraiDemo;
 import com.stars.entity.Record;
-import com.sun.prism.PhongMaterial;
-import net.mamoe.mirai.console.data.AutoSavePluginData;
-import net.mamoe.mirai.console.data.Value;
-import net.mamoe.mirai.console.data.java.JAutoSavePluginData;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerRecord {
-    public static final String filePath = "./DuelData/";
+    public static final String filePath =
+            new File("").getAbsolutePath() + File.separator + "DuelData" + File.separator;
     public static final String fileName = "PlayerRecord.json";
     public static Map<Long,Record> recordMap = new HashMap<>();
 
@@ -94,7 +90,7 @@ public class PlayerRecord {
 
     public void init(){
         File file = new File(filePath + fileName);
-        System.out.println("path:"+file.getAbsolutePath());
+        MiraiDemo.INSTANCE.getLogger().info(file.getAbsolutePath());
         if(file.exists() == false) {
             this.createFile();
             try {
