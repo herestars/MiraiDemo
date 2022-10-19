@@ -88,9 +88,7 @@ public class Game {
         DuelGameBuilder.endGame(group);
         try {
             PlayerRecord.saveFile();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
     }

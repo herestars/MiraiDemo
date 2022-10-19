@@ -83,6 +83,9 @@ public class RobotCommandManager {
             StringBuilder rankMsg = new StringBuilder("决斗游戏排行榜（Top 10）：\n");
             for (int i = 1; i <= 10; i++) {
                 Record r = rank.poll();
+                if(r==null) {
+                    break;
+                }
                 String str =
                         i + ". " + r.getNickName() + "(" + r.getQQ() + ")：" + " " + r.getWin() + "胜 " + r.getLose() + "负 " + r.getDraw() + "平\n";
                 rankMsg.append(str);
@@ -93,11 +96,15 @@ public class RobotCommandManager {
                 curGroup.sendMessage("对不起，您还没有决斗记录哦！快玩一局吧~");
             }
             Record r = PlayerRecord.recordMap.get(fromQQ);
-            double Sum = (double) (r.getWin() + r.getDraw() + r.getLose());
-            double WinRate = Sum / (double) r.getWin();
+            long Sum = (long) (r.getWin() + r.getDraw() + r.getLose());
+            double WinRate = 0;
+            if(r.getWin()!=0) {
+                WinRate =  (double) r.getWin() / Sum * 100;
+            }
+            String WinRateStr = Double.toString(WinRate).substring(0,4);
             String Msg =
-                    r.getNickName() + "(" + r.getQQ() + ")您的战绩为：" + " " + r.getWin() + "胜 " + r.getLose() + "负 " + r.getDraw() + "平，总局数："
-                    + Sum + "，胜率为 " + WinRate + "\n";
+                    r.getNickName() + "(" + r.getQQ() + ") 您的战绩为：" + r.getWin() + "胜 " + r.getLose() + "负 " + r.getDraw() + "平，总局数："
+                    + Sum + "，胜率:" + WinRateStr + "%\n";
             curGroup.sendMessage(Msg);
         }
     }

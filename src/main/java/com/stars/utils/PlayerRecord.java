@@ -17,15 +17,30 @@ public class PlayerRecord {
     public static Map<Long,Record> recordMap = new HashMap<>();
 
     public static void AddWin(Long fromQQ,String NickName) {
-        recordMap.getOrDefault(fromQQ,new Record(fromQQ,NickName,Long.valueOf(0),Long.valueOf(0),Long.valueOf(0))).AddWin();
+        if(recordMap.containsKey(fromQQ)){
+            recordMap.get(fromQQ).AddWin();
+        } else {
+            recordMap.put(fromQQ,new Record(fromQQ,NickName,Long.valueOf(0),Long.valueOf(0),Long.valueOf(0)));
+            recordMap.get(fromQQ).AddWin();
+        }
     }
 
     public static void AddLose(Long fromQQ,String NickName){
-        recordMap.getOrDefault(fromQQ,new Record(fromQQ,NickName,Long.valueOf(0),Long.valueOf(0),Long.valueOf(0))).AddLose();
+        if(recordMap.containsKey(fromQQ)){
+            recordMap.get(fromQQ).AddLose();
+        } else {
+            recordMap.put(fromQQ,new Record(fromQQ,NickName,Long.valueOf(0),Long.valueOf(0),Long.valueOf(0)));
+            recordMap.get(fromQQ).AddLose();
+        }
     }
 
     public static void AddDraw(Long fromQQ,String NickName){
-        recordMap.getOrDefault(fromQQ,new Record(fromQQ,NickName,Long.valueOf(0),Long.valueOf(0),Long.valueOf(0))).AddDraw();
+        if(recordMap.containsKey(fromQQ)){
+            recordMap.get(fromQQ).AddDraw();
+        } else {
+            recordMap.put(fromQQ,new Record(fromQQ,NickName,Long.valueOf(0),Long.valueOf(0),Long.valueOf(0)));
+            recordMap.get(fromQQ).AddDraw();
+        }
     }
 
     public void createFile() {
